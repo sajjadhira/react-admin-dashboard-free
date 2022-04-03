@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-admin-dashboard-free/static/css/main.040bbaa6.css",
+    "main.js": "/react-admin-dashboard-free/static/js/main.76407a50.js",
+    "index.html": "/react-admin-dashboard-free/index.html",
+    "main.040bbaa6.css.map": "/react-admin-dashboard-free/static/css/main.040bbaa6.css.map",
+    "main.76407a50.js.map": "/react-admin-dashboard-free/static/js/main.76407a50.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.040bbaa6.css",
+    "static/js/main.76407a50.js"
+  ]
+}
