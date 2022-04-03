@@ -16,6 +16,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Content children={<Dashboard />} />} />
             <Route
+              path="/react-admin-dashboard-free/"
+              element={<Content children={<Dashboard />} />}
+            />
+            <Route
               path="*"
               element={
                 <Content

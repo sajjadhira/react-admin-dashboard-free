@@ -112,3 +112,7 @@ code {
 .navbar a {
   text-decoration: none;
 }
+.greeting-text {
+  font-size: 30px;
+  margin-top: 20px;
+}

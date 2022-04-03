@@ -13,8 +13,8 @@ const Dashboard = () => {
           <Card border="default" bg="default" className="shadow">
             {/* <Card.Header>Header</Card.Header> */}
             <Card.Body>
-              <Card.Title className="text-center fs-5">
-                <span className="text-brand">Welcome Sajjad</span>
+              <Card.Title className="text-center">
+                <span className="text-brand greeting-text">Welcome Sajjad</span>
               </Card.Title>
               <Card.Text>
                 You have done 57.6% more sales today. Check your new badge in
@@ -24,7 +24,7 @@ const Dashboard = () => {
           </Card>
         </div>
         <div className="col-md-3 col-sm-12 mb-3 d-flex justify-content-center">
-          <Card border="primary" bg="primary" text="white">
+          <Card border="primary" bg="primary" text="white" className="shadow">
             <Card.Header>Header</Card.Header>
             <Card.Body>
               <Card.Title>Primary Card Title</Card.Title>
@@ -36,7 +36,7 @@ const Dashboard = () => {
           </Card>
         </div>
         <div className="col-md-3 col-sm-12 mb-3 d-flex justify-content-center">
-          <Card border="primary" bg="primary" text="white">
+          <Card border="primary" bg="primary" text="white" className="shadow">
             <Card.Header>Header</Card.Header>
             <Card.Body>
               <Card.Title>Primary Card Title</Card.Title>
