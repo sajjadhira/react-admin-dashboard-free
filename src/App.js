@@ -16,7 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Content children={<Dashboard />} />} />
             <Route
-              path="/react-admin-dashboard-free/"
+              path="/reactpanel/"
               element={<Content children={<Dashboard />} />}
             />
             <Route
