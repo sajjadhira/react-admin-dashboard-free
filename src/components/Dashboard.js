@@ -11,7 +11,12 @@ import {
   ResponsiveContainer,
   AreaChart,
   Area,
+  Legend,
 } from "recharts";
+
+import { FcSalesPerformance } from "react-icons/fc";
+import { AiOutlineLineChart } from "react-icons/ai";
+import { FiPieChart } from "react-icons/fi";
 
 const Dashboard = () => {
   const data = [
@@ -66,40 +71,85 @@ const Dashboard = () => {
       </div>
 
       <div className="row mt-5">
-        <div className="col-md-6 col-sm-12 mb-3 d-flex justify-content-center">
-          <Card border="default" bg="default" className="shadow">
+        <div className="col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+          <Card border="default" bg="default" className="shadow card-height">
             {/* <Card.Header>Header</Card.Header> */}
             <Card.Body>
-              <Card.Title className="text-center">
-                <span className="text-brand greeting-text">Welcome Sajjad</span>
+              <Card.Title className="mt-1">
+                <span className="text-primary fs-3 fw-bold">
+                  <AiOutlineLineChart /> Sales
+                </span>
               </Card.Title>
-              <Card.Text>
-                You have done 57.6% more sales today. Check your new badge in
-                your profile.
+              <div className="text-center">
+                <span className="ms-auto fw-bold fs-4 text-muted">$10,254</span>
+              </div>
+              <Card.Text className="mt-0">
+                <ResponsiveContainer width={286} height={100}>
+                  <LineChart data={data}>
+                    <Line
+                      type="monotone"
+                      dataKey="pv"
+                      stroke="#8884d8"
+                      strokeWidth={2}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
               </Card.Text>
             </Card.Body>
           </Card>
         </div>
-        <div className="col-md-3 col-sm-12 mb-3 d-flex justify-content-center">
-          <Card border="primary" bg="primary" text="white" className="shadow">
-            <Card.Header>Header</Card.Header>
+
+        <div className="col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+          <Card border="default" bg="default" className="shadow card-height">
+            {/* <Card.Header>Header</Card.Header> */}
             <Card.Body>
-              <Card.Title>Primary Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+              <Card.Title className="mt-1">
+                <span className="text-warning fs-3 fw-bold">
+                  <FcSalesPerformance /> Expense
+                </span>
+              </Card.Title>
+              <div className="text-center">
+                <span className="ms-auto fw-bold fs-4 text-muted">$8,254</span>
+              </div>
+              <Card.Text className="mt-0">
+                <ResponsiveContainer width={286} height={100}>
+                  <LineChart data={data}>
+                    <Line
+                      type="monotone"
+                      dataKey="pv"
+                      stroke="#8884d8"
+                      strokeWidth={2}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
               </Card.Text>
             </Card.Body>
           </Card>
         </div>
-        <div className="col-md-3 col-sm-12 mb-3 d-flex justify-content-center">
-          <Card border="primary" bg="primary" text="white" className="shadow">
-            <Card.Header>Header</Card.Header>
+
+        <div className="col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+          <Card border="default" bg="default" className="shadow card-height">
+            {/* <Card.Header>Header</Card.Header> */}
             <Card.Body>
-              <Card.Title>Primary Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+              <Card.Title className="mt-1">
+                <span className="text-success fs-3 fw-bold">
+                  <FiPieChart /> Profit
+                </span>
+              </Card.Title>
+              <div className="text-center">
+                <span className="ms-auto fw-bold fs-4 text-muted">$10,254</span>
+              </div>
+              <Card.Text className="mt-0">
+                <ResponsiveContainer width={286} height={100}>
+                  <LineChart data={data}>
+                    <Line
+                      type="monotone"
+                      dataKey="pv"
+                      stroke="#8884d8"
+                      strokeWidth={2}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
               </Card.Text>
             </Card.Body>
           </Card>
