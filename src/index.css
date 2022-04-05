@@ -42,130 +42,10 @@ code {
   background: #555;
 }
 
-/* Scroolbar Style */
-
-/* Header styles */
-
-.brand-text {
-  -webkit-animation: fadein 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s 1 normal
-    forwards;
-  animation: fadein 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s 1 normal forwards;
-  padding-left: 1rem;
-  color: var(--brand-color) !important;
-  font-weight: 900;
-  letter-spacing: 0.01rem;
-  font-size: 1.45rem;
-  text-transform: uppercase;
-  transition: all 1s ease;
-}
-.brand-text:hover {
-  color: navy !important;
-}
-
-.search-input:focus {
-  border-color: rgba(251, 252, 251, 0.8) !important;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset,
-    0 0 8px rgba(232, 234, 232, 0.6) !important;
-  outline: 0 none !important;
-}
-/* Sidebar text */
-
-.sidebar-nav {
-  width: var(--offcanvas-width) !important;
-  /* top: var(--topNavbarHeight) !important; */
-  /* height: calc(100% - var(--topNavbarHeight)); */
-  height: calc(100%);
-}
-
-.sidebar-link {
-  display: flex;
-  align-items: center;
-}
-
-.sidebar-link .right-icon {
-  display: inline-flex;
-  transition: all 0.5s ease;
-  float: right;
-}
-.sidebar-link[aria-expanded="true"] .right-icon {
-  transform: rotate(180deg);
-}
+/* Typography */
 
 .bg-brand {
   background-color: var(--brand-color) !important;
-}
-.toogle-icon {
-  transition: all 0.5s ease;
-}
-.toogle-icon:hover {
-  transform: rotate(90deg);
-}
-
-.bg-brand .nav-item a {
-  color: #fff !important;
-}
-
-.bg-brand .navbar-nav a {
-  color: #fff;
-}
-.bg-brand .nav-item .dropdown-item {
-  color: var(--brand-color) !important;
-}
-.text-brand {
-  color: var(--brand-color) !important;
-}
-.text-sw {
-  color: var(--semi-white);
-}
-.sidebar .nav-link {
-  color: #333;
-  border-radius: 3px;
-  font-size: large;
-  transition: all 0.3s;
-}
-.sidebar .nav-link.active,
-.nav-link:focus,
-.sidebar .nav-link:hover {
-  background-color: var(--brand-color);
-  color: var(--white) !important;
-  box-shadow: 0px 3px 10px var(--brand-color);
-}
-.nav-link:hover {
-  padding-left: 20px !important;
-}
-@media only screen and (min-width: 600px) {
-  main {
-    margin-left: var(--offcanvas-width) !important;
-  }
-
-  .offcanvas-header .btn-close {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .dropdown-menu-end {
-    left: auto !important;
-    right: auto !important;
-  }
-}
-
-.offcanvas-header a,
-.navbar a {
-  text-decoration: none;
-}
-.greeting-text {
-  font-size: 35px;
-  margin-top: 30px !important;
-}
-.card-height {
-  min-height: 100px;
-  border-radius: 10px;
-  transition: all 500ms ease;
-}
-
-.card-height:hover {
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.4) !important;
 }
 
 .pills {
@@ -205,6 +85,182 @@ code {
   vertical-align: middle;
   margin: 12px;
   margin-top: 0px;
+}
+
+/* Scroolbar Style */
+
+/* Header styles */
+
+.brand-text {
+  -webkit-animation: fadein 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s 1 normal
+    forwards;
+  animation: fadein 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s 1 normal forwards;
+  padding-left: 1rem;
+  color: var(--brand-color) !important;
+  font-weight: 900;
+  letter-spacing: 0.01rem;
+  font-size: 1.45rem;
+  text-transform: uppercase;
+  transition: all 1s ease;
+}
+.brand-text:hover {
+  color: navy !important;
+}
+
+.search-input:focus {
+  border-color: rgba(251, 252, 251, 0.8) !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset,
+    0 0 8px rgba(232, 234, 232, 0.6) !important;
+  outline: 0 none !important;
+}
+
+/* navbar animation for menu */
+
+/* @media (min-width: 768px) {
+  .dropdown-menu-end {
+
+  }
+} */
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0rem);
+    opacity: 1;
+  }
+
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes slideIn {
+  0% {
+    -webkit-transform: transform;
+    -webkit-opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+    -webkit-opacity: 1;
+  }
+
+  0% {
+    -webkit-transform: translateY(1rem);
+    -webkit-opacity: 0;
+  }
+}
+
+.dropdown-menu-end {
+  -webkit-animation-name: slideIn;
+  animation-name: slideIn;
+  animation-duration: 0.5s;
+  -webkit-animation-duration: 0.5s;
+  animation-fill-mode: both;
+  -webkit-animation-fill-mode: both;
+}
+
+/* Sidebar text */
+
+.sidebar-nav {
+  width: var(--offcanvas-width) !important;
+  /* top: var(--topNavbarHeight) !important; */
+  /* height: calc(100% - var(--topNavbarHeight)); */
+  height: calc(100%);
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-link .right-icon {
+  display: inline-flex;
+  transition: all 0.5s ease;
+  float: right;
+}
+.sidebar-link[aria-expanded="true"] .right-icon {
+  transform: rotate(180deg);
+}
+
+.toogle-icon {
+  transition: all 0.5s ease;
+}
+.toogle-icon:hover {
+  transform: rotate(90deg);
+}
+
+.bg-brand .nav-item a {
+  color: #fff !important;
+}
+
+.bg-brand .navbar-nav a {
+  color: #fff;
+}
+.bg-brand .nav-item .dropdown-item {
+  color: var(--brand-color) !important;
+}
+.text-brand {
+  color: var(--brand-color) !important;
+}
+.text-sw {
+  color: var(--semi-white);
+}
+.sidebar .nav-link {
+  color: #333;
+  border-radius: 3px;
+  font-size: large;
+  transition: all 0.3s;
+}
+.sidebar .nav-link.active,
+.sidebar .nav-link:focus,
+.sidebar .nav-link:hover {
+  background-color: var(--brand-color);
+  color: var(--white) !important;
+  box-shadow: 0px 3px 10px var(--brand-color);
+}
+.sidebar .nav-link:hover {
+  padding-left: 20px !important;
+}
+@media only screen and (min-width: 600px) {
+  main {
+    margin-left: var(--offcanvas-width) !important;
+  }
+
+  .offcanvas-header .btn-close {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .dropdown-menu-end {
+    left: auto !important;
+    right: auto !important;
+  }
+}
+
+.offcanvas-header a,
+.navbar a {
+  text-decoration: none;
+}
+
+.greeting-text {
+  font-size: 35px;
+  margin-top: 30px !important;
+}
+.card-height {
+  min-height: 100px;
+  border-radius: 10px;
+  transition: all 500ms ease;
+}
+
+.card-height:hover {
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.4) !important;
 }
 
 /* sidebar profile */
