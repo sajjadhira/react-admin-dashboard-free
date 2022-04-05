@@ -6,39 +6,50 @@ import { QueryClientProvider, QueryClient } from "react-query";
 // import { ReactQueryDevtools } from "react-query/devtools";
 import Content from "./components/Content";
 import Dashboard from "./components/Dashboard";
+import React from "react";
+
+const context = {
+  name: "Sajjad Hossain",
+  role: "Superadmin",
+};
+
+export const globalContext = React.createContext();
+
 const queryClinet = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClinet}>
-      <BrowserRouter>
-        <div Header="App">
-          <Routes>
-            <Route path="/" element={<Content children={<Dashboard />} />} />
-            <Route
-              path="/reactpanel/"
-              element={<Content children={<Dashboard />} />}
-            />
-            <Route
-              path="/products/"
-              element={<Content children={<Dashboard />} />}
-            />
-            <Route
-              path="*"
-              element={
-                <Content
-                  children={
-                    <div className="text-center fw-bold">
-                      <span className="mt-5 pt-5 fs-5">404 Not Found!</span>
-                    </div>
-                  }
-                />
-              }
-            />
-          </Routes>
-        </div>
-      </BrowserRouter>
-    </QueryClientProvider>
+    <globalContext.Provider value={context}>
+      <QueryClientProvider client={queryClinet}>
+        <BrowserRouter>
+          <div Header="App">
+            <Routes>
+              <Route path="/" element={<Content children={<Dashboard />} />} />
+              <Route
+                path="/reactpanel/"
+                element={<Content children={<Dashboard />} />}
+              />
+              <Route
+                path="/products/"
+                element={<Content children={<Dashboard />} />}
+              />
+              <Route
+                path="*"
+                element={
+                  <Content
+                    children={
+                      <div className="text-center fw-bold">
+                        <span className="mt-5 pt-5 fs-5">404 Not Found!</span>
+                      </div>
+                    }
+                  />
+                }
+              />
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </globalContext.Provider>
   );
 }
 

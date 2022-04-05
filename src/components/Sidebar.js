@@ -5,28 +5,44 @@ import { FaProductHunt, FaBraille, FaUsers } from "react-icons/fa";
 import { BiCategoryAlt, BiChevronDown, BiCircle } from "react-icons/bi";
 
 import { RiShieldUserFill } from "react-icons/ri";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import { Link } from "react-router-dom";
+
+import Image from "react-bootstrap/Image";
+import avatar from "../images/avatar.jpg";
+
+import { globalContext } from "../App";
 
 const Sidebar = () => {
   const [categoriesmenu, setCategoriesmenu] = useState(false);
   const [suppliermenu, setSuppliermenu] = useState(false);
   const [usersmenu, setUsermenu] = useState(false);
 
+  const user = useContext(globalContext);
+
   return (
     <>
       <Offcanvas.Header closeButton>
         <Link to="/">
-          <Offcanvas.Title>
+          <Offcanvas.Title className="d-flex ms-auto">
             <span className="brand-text">ReactPanel</span>
           </Offcanvas.Title>
         </Link>
       </Offcanvas.Header>
       <Offcanvas.Body className="p-2">
+        <div className="pt-3 text-center sidear-profile">
+          <div className="avatar">
+            <Image src={avatar} roundedCircle={true} />
+          </div>
+          <div className="name pt-1 fw-bold">{user.name}</div>
+          <div className="role pt-1 fw-light">{user.role}</div>
+        </div>
         <ul className="navbar-nav sidebar mt-5">
           <li>
-            <div className="text-muted small fw-bold text-uppercase">Core</div>
+            <div className="text-muted small fw-bold text-uppercase">
+              at your service
+            </div>
           </li>
 
           <li className="mt-3">
