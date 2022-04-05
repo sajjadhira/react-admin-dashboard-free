@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
+// import { ReactQueryDevtools } from "react-query/devtools";
 import Content from "./components/Content";
 import Dashboard from "./components/Dashboard";
 const queryClinet = new QueryClient();
@@ -17,6 +17,10 @@ function App() {
             <Route path="/" element={<Content children={<Dashboard />} />} />
             <Route
               path="/reactpanel/"
+              element={<Content children={<Dashboard />} />}
+            />
+            <Route
+              path="/products/"
               element={<Content children={<Dashboard />} />}
             />
             <Route

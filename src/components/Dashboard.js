@@ -1,5 +1,4 @@
 import { Card } from "react-bootstrap";
-import { useEffect, useState } from "react";
 
 import {
   LineChart,
@@ -11,7 +10,6 @@ import {
   ResponsiveContainer,
   AreaChart,
   Area,
-  Legend,
 } from "recharts";
 
 import { FcSalesPerformance } from "react-icons/fc";
@@ -142,7 +140,6 @@ const Dashboard = () => {
 
         <div className="col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
           <Card border="default" bg="default" className="shadow card-height">
-            {/* <Card.Header>Header</Card.Header> */}
             <Card.Body>
               <Card.Title className="mt-1">
                 <span className="shape-icons light-bg-success me-2 ms-auto">
@@ -153,7 +150,7 @@ const Dashboard = () => {
                 </span>
               </Card.Title>
               <div className="text-center">
-                <span className="ms-auto fw-bold fs-4">-$8,254</span>
+                <span className="ms-auto fw-bold fs-4 text-muted">-$8,254</span>
                 <span className="pills light-bg-danger ms-2">
                   <FiArrowDown /> 15%
                 </span>

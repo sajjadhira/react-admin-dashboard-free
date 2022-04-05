@@ -1,8 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,100&display=swap");
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f8f8f8 !important;
@@ -30,6 +30,10 @@ code {
   letter-spacing: 0.01rem;
   font-size: 1.45rem;
   text-transform: uppercase;
+  transition: all 1s ease;
+}
+.brand-text:hover {
+  color: navy !important;
 }
 
 .sidebar-nav {
@@ -121,7 +125,13 @@ code {
   margin-top: 30px !important;
 }
 .card-height {
-  min-height: 200px;
+  min-height: 100px;
+  border-radius: 10px;
+  transition: all 500ms ease;
+}
+
+.card-height:hover {
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.4) !important;
 }
 
 .pills {
