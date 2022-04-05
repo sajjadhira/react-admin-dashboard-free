@@ -89,11 +89,12 @@ const Header = () => {
                 <FormControl
                   placeholder="Search..."
                   aria-label="Search..."
-                  aria-describedby="basic-addon2"
+                  aria-describedby="search-button"
+                  className="search-input"
                 />
                 <Button
                   variant="outline-secondary"
-                  id="button-addon2"
+                  id="search-button"
                   className="bg-brand text-white"
                 >
                   <FaSearch />

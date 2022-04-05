@@ -44,6 +44,8 @@ code {
 
 /* Scroolbar Style */
 
+/* Header styles */
+
 .brand-text {
   -webkit-animation: fadein 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s 1 normal
     forwards;
@@ -59,6 +61,14 @@ code {
 .brand-text:hover {
   color: navy !important;
 }
+
+.search-input:focus {
+  border-color: rgba(251, 252, 251, 0.8) !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset,
+    0 0 8px rgba(232, 234, 232, 0.6) !important;
+  outline: 0 none !important;
+}
+/* Sidebar text */
 
 .sidebar-nav {
   width: var(--offcanvas-width) !important;
