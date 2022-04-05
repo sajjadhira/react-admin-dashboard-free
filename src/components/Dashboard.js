@@ -16,7 +16,7 @@ import {
 
 import { FcSalesPerformance } from "react-icons/fc";
 import { AiOutlineLineChart } from "react-icons/ai";
-import { FiPieChart } from "react-icons/fi";
+import { FiPieChart, FiArrowUp, FiArrowDown } from "react-icons/fi";
 
 const Dashboard = () => {
   const data = [
@@ -75,13 +75,20 @@ const Dashboard = () => {
           <Card border="default" bg="default" className="shadow card-height">
             {/* <Card.Header>Header</Card.Header> */}
             <Card.Body>
-              <Card.Title className="mt-1">
-                <span className="text-primary fs-3 fw-bold">
-                  <AiOutlineLineChart /> Sales
+              <Card.Title className="mt-2">
+                <span className="shape-icons light-bg-primary me-2 ms-auto">
+                  <AiOutlineLineChart />
+                </span>
+                <span className="text-primary fs-3 fw-light ms-auto">
+                  Sales
                 </span>
               </Card.Title>
               <div className="text-center">
                 <span className="ms-auto fw-bold fs-4 text-muted">$10,254</span>
+
+                <span className="pills light-bg-success ms-2">
+                  <FiArrowUp /> 10%
+                </span>
               </div>
               <Card.Text className="mt-0">
                 <ResponsiveContainer width={286} height={100}>
@@ -104,12 +111,18 @@ const Dashboard = () => {
             {/* <Card.Header>Header</Card.Header> */}
             <Card.Body>
               <Card.Title className="mt-1">
-                <span className="text-warning fs-3 fw-bold">
-                  <FcSalesPerformance /> Expense
+                <span className="shape-icons light-bg-warning me-2 ms-auto">
+                  <FcSalesPerformance />
+                </span>
+                <span className="text-warning fs-3 fw-light ms-auto">
+                  Expense
                 </span>
               </Card.Title>
               <div className="text-center">
-                <span className="ms-auto fw-bold fs-4 text-muted">$8,254</span>
+                <span className="ms-auto fw-bold fs-4 text-muted">$18,254</span>
+                <span className="pills light-bg-warning ms-2">
+                  <FiArrowUp /> 15%
+                </span>
               </div>
               <Card.Text className="mt-0">
                 <ResponsiveContainer width={286} height={100}>
@@ -132,12 +145,18 @@ const Dashboard = () => {
             {/* <Card.Header>Header</Card.Header> */}
             <Card.Body>
               <Card.Title className="mt-1">
-                <span className="text-success fs-3 fw-bold">
-                  <FiPieChart /> Profit
+                <span className="shape-icons light-bg-success me-2 ms-auto">
+                  <FiPieChart />
+                </span>
+                <span className="text-success fs-3 fw-light ms-auto">
+                  Profit
                 </span>
               </Card.Title>
               <div className="text-center">
-                <span className="ms-auto fw-bold fs-4 text-muted">$10,254</span>
+                <span className="ms-auto fw-bold fs-4">-$8,254</span>
+                <span className="pills light-bg-danger ms-2">
+                  <FiArrowDown /> 15%
+                </span>
               </div>
               <Card.Text className="mt-0">
                 <ResponsiveContainer width={286} height={100}>
