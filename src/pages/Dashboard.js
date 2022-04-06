@@ -20,12 +20,15 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { React, useContext, useEffect } from "react";
 import { globalContext } from "../App";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const user = useContext(globalContext);
 
+  let navigate = useNavigate();
+
   useEffect(() => {
-    toast("Welcome " + user.name);
+    !user.logged ? navigate("/login/") : toast("Welcome " + user.name);
   });
 
   const data = [

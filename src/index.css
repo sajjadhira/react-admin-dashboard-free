@@ -241,7 +241,7 @@ code {
   padding-left: 20px !important;
 }
 @media only screen and (min-width: 600px) {
-  main {
+  .main {
     margin-left: var(--offcanvas-width) !important;
   }
 

@@ -13,6 +13,7 @@ import Tables from "./pages/Tables";
 import ClipLoader from "react-spinners/ClipLoader";
 
 const context = {
+  logged: true,
   name: "Sajjad Hossain",
   role: "Superadmin",
 };
@@ -61,7 +62,7 @@ function App() {
                   element={
                     <Content
                       children={
-                        <div className="text-center fw-bold">
+                        <div className="text-center fw-bold ms-auto">
                           <span className="mt-5 pt-5 fs-5">404 Not Found!</span>
                         </div>
                       }
