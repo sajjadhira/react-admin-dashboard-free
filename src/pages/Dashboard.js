@@ -16,7 +16,18 @@ import { FcSalesPerformance } from "react-icons/fc";
 import { AiOutlineLineChart } from "react-icons/ai";
 import { FiPieChart, FiArrowUp, FiArrowDown } from "react-icons/fi";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { React, useContext, useEffect } from "react";
+import { globalContext } from "../App";
+
 const Dashboard = () => {
+  const user = useContext(globalContext);
+
+  useEffect(() => {
+    toast("Welcome " + user.name);
+  });
+
   const data = [
     {
       name: "Page A",
@@ -64,6 +75,7 @@ const Dashboard = () => {
 
   return (
     <>
+      <ToastContainer />
       <div className="row">
         <div className="col-md-12 fw-bold fs-3">Dashboard</div>
       </div>
