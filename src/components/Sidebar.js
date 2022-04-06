@@ -2,9 +2,15 @@ import { Offcanvas, Collapse } from "react-bootstrap";
 
 import { FaProductHunt, FaBraille, FaUsers } from "react-icons/fa";
 
-import { BiCategoryAlt, BiChevronDown, BiCircle } from "react-icons/bi";
+import {
+  BiCategoryAlt,
+  BiChevronDown,
+  BiCircle,
+  BiTable,
+} from "react-icons/bi";
 
 import { RiShieldUserFill } from "react-icons/ri";
+import { AiOutlineDashboard } from "react-icons/ai";
 import { useContext, useState } from "react";
 
 import { Link } from "react-router-dom";
@@ -48,18 +54,18 @@ const Sidebar = () => {
           <li className="mt-3">
             <Link to="/" className="nav-link px-3 sidebar-link">
               <span>
-                <FaBraille className="me-2" />
+                <AiOutlineDashboard className="me-2" />
               </span>
               <span>Dashboard</span>
             </Link>
           </li>
 
           <li className="mt-3">
-            <Link to="/products/" className="nav-link px-3 sidebar-link">
+            <Link to="/tables/" className="nav-link px-3 sidebar-link">
               <span className="me-2">
-                <FaProductHunt />
+                <BiTable />
               </span>
-              <span>Products</span>
+              <span>Tables</span>
             </Link>
           </li>
 

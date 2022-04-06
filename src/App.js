@@ -4,9 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
 // import { ReactQueryDevtools } from "react-query/devtools";
-import Content from "./components/Content";
-import Dashboard from "./components/Dashboard";
 import React from "react";
+
+import Content from "./components/Content";
+import Dashboard from "./pages/Dashboard";
+import Tables from "./pages/Tables";
 
 const context = {
   name: "Sajjad Hossain",
@@ -30,8 +32,8 @@ function App() {
                 element={<Content children={<Dashboard />} />}
               />
               <Route
-                path="/products/"
-                element={<Content children={<Dashboard />} />}
+                path="/tables/"
+                element={<Content children={<Tables />} />}
               />
               <Route
                 path="*"
