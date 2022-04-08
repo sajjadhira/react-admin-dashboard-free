@@ -72,6 +72,10 @@ code {
   background-color: #f3bbc1;
   color: #dc4468;
 }
+.light-bg-info {
+  background-color: #bbe3f3;
+  color: #44b4dc;
+}
 
 .shape-icons {
   font-size: 40px;

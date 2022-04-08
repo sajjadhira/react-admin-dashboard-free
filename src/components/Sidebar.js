@@ -1,9 +1,9 @@
 import { Offcanvas, Collapse } from "react-bootstrap";
 
-import { FaProductHunt, FaBraille, FaUsers } from "react-icons/fa";
+// import { FaProductHunt, FaBraille, FaUsers } from "react-icons/fa";
 
 import {
-  BiCategoryAlt,
+  // BiCategoryAlt,
   BiChevronDown,
   BiCircle,
   BiTable,

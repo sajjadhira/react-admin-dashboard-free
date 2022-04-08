@@ -14,6 +14,7 @@ import {
 
 import { FcSalesPerformance } from "react-icons/fc";
 import { AiOutlineLineChart } from "react-icons/ai";
+import { FaUsers } from "react-icons/fa";
 import { FiPieChart, FiArrowUp, FiArrowDown } from "react-icons/fi";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -84,7 +85,7 @@ const Dashboard = () => {
       </div>
 
       <div className="row mt-5">
-        <div className="col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+        <div className="col-md-3 col-sm-12 mb-3 d-flex justify-content-center">
           <Card border="default" bg="default" className="shadow card-height">
             {/* <Card.Header>Header</Card.Header> */}
             <Card.Body>
@@ -104,7 +105,7 @@ const Dashboard = () => {
                 </span>
               </div>
               <Card.Text className="mt-0">
-                <ResponsiveContainer width={286} height={100}>
+                <ResponsiveContainer width={260} height={100}>
                   <LineChart data={data}>
                     <Line
                       type="monotone"
@@ -119,7 +120,7 @@ const Dashboard = () => {
           </Card>
         </div>
 
-        <div className="col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+        <div className="col-md-3 col-sm-12 mb-3 d-flex justify-content-center">
           <Card border="default" bg="default" className="shadow card-height">
             {/* <Card.Header>Header</Card.Header> */}
             <Card.Body>
@@ -138,7 +139,7 @@ const Dashboard = () => {
                 </span>
               </div>
               <Card.Text className="mt-0">
-                <ResponsiveContainer width={286} height={100}>
+                <ResponsiveContainer width={260} height={100}>
                   <LineChart data={data}>
                     <Line
                       type="monotone"
@@ -153,7 +154,7 @@ const Dashboard = () => {
           </Card>
         </div>
 
-        <div className="col-md-4 col-sm-12 mb-3 d-flex justify-content-center">
+        <div className="col-md-3 col-sm-12 mb-3 d-flex justify-content-center">
           <Card border="default" bg="default" className="shadow card-height">
             <Card.Body>
               <Card.Title className="mt-1">
@@ -171,7 +172,40 @@ const Dashboard = () => {
                 </span>
               </div>
               <Card.Text className="mt-0">
-                <ResponsiveContainer width={286} height={100}>
+                <ResponsiveContainer width={260} height={100}>
+                  <LineChart data={data}>
+                    <Line
+                      type="monotone"
+                      dataKey="pv"
+                      stroke="#8884d8"
+                      strokeWidth={2}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </div>
+
+        <div className="col-md-3 col-sm-12 mb-3 d-flex justify-content-center">
+          <Card border="default" bg="default" className="shadow card-height">
+            <Card.Body>
+              <Card.Title className="mt-1">
+                <span className="shape-icons light-bg-info me-2 ms-auto">
+                  <FaUsers />
+                </span>
+                <span className="text-success fs-3 fw-light ms-auto">
+                  Users
+                </span>
+              </Card.Title>
+              <div className="text-center">
+                <span className="ms-auto fw-bold fs-4 text-muted">2654</span>
+                <span className="pills light-bg-success ms-2">
+                  <FiArrowUp /> 10%
+                </span>
+              </div>
+              <Card.Text className="mt-0">
+                <ResponsiveContainer width={260} height={100}>
                   <LineChart data={data}>
                     <Line
                       type="monotone"

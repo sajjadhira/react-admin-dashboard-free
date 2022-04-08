@@ -11,6 +11,8 @@ import Dashboard from "./pages/Dashboard";
 import Tables from "./pages/Tables";
 
 import ClipLoader from "react-spinners/ClipLoader";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 const context = {
   logged: true,
@@ -24,7 +26,6 @@ const queryClinet = new QueryClient();
 
 function App() {
   const [loading, setLoading] = useState(true);
-  let [color, setColor] = useState("#ffffff");
 
   useEffect(() => {
     setTimeout(() => {
@@ -50,8 +51,20 @@ function App() {
                   element={<Content children={<Dashboard />} />}
                 />
                 <Route
+                  path="/dashboard/"
+                  element={<Content children={<Dashboard />} />}
+                />
+                <Route
                   path="/reactpanel/"
                   element={<Content children={<Dashboard />} />}
+                />
+                <Route
+                  path="/login/"
+                  element={<Content children={<Login />} />}
+                />
+                <Route
+                  path="/register/"
+                  element={<Content children={<Register />} />}
                 />
                 <Route
                   path="/tables/"
