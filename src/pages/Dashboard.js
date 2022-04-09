@@ -27,9 +27,14 @@ const Dashboard = () => {
   const user = useContext(globalContext);
 
   let navigate = useNavigate();
+  const toastFrom = "dashboard";
 
   useEffect(() => {
-    !user.logged ? navigate("/login/") : toast("Welcome " + user.name);
+    !user.logged
+      ? navigate("/login/")
+      : toast.info("You are logged in with " + user.name, {
+          toastId: toastFrom,
+        });
   });
 
   const data = [

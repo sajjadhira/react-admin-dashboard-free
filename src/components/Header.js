@@ -17,10 +17,13 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 import { BsToggleOff } from "react-icons/bs";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 
 import { useMediaQuery } from "react-responsive";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { globalContext } from "../App";
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -29,9 +32,16 @@ const Header = () => {
     setShow((s) => !s);
   };
 
-  const isMobileDevice = useMediaQuery({
-    query: "(min-device-width: 480px)",
-  });
+  const user = useContext(globalContext);
+  // interaging logout
+  const handleLogout = () => {
+    localStorage.clear();
+    toast.success("Logged Out Successfully!");
+
+    setTimeout(() => {
+      window.location.href = "/login";
+    }, 1000);
+  };
 
   const isLaptop = useMediaQuery({
     query: "(min-device-width: 1024px)",
@@ -65,10 +75,11 @@ const Header = () => {
     // if (isBigScreen) {
     //   setShow(true);
     // }
-  });
+  }, [isDesktop, isLaptop, isBigScreen, user]);
 
   return (
     <>
+      <ToastContainer />
       <Navbar bg="default" className="bg-light shadow" expand="lg">
         <Container fluid>
           <Link to="/">
@@ -120,9 +131,7 @@ const Header = () => {
 
             <NavDropdown title="Menu" id="navbarScrollingDropdown" align="end">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Another action
-              </NavDropdown.Item>
+              <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
             </NavDropdown>
           </Navbar.Collapse>
         </Container>

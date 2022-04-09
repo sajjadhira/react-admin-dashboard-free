@@ -78,7 +78,7 @@ const Sidebar = () => {
               className="nav-link px-3 sidebar-link"
             >
               <span className="me-2">
-                <RiShieldUserFill />{" "}
+                <RiShieldUserFill />
               </span>
               <span>Pages</span>
               <span className="right-icon ms-auto">

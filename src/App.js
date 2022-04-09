@@ -14,18 +14,17 @@ import ClipLoader from "react-spinners/ClipLoader";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
-const context = {
-  logged: true,
-  name: "Sajjad Hossain",
-  role: "Superadmin",
-};
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const globalContext = React.createContext();
 
 const queryClinet = new QueryClient();
 
 function App() {
+  // const [context, setContext] = useState({ logged: false });
   const [loading, setLoading] = useState(true);
+  var context;
 
   useEffect(() => {
     setTimeout(() => {
@@ -33,12 +32,52 @@ function App() {
     }, 1000);
   }, []);
 
+  // searching for login
+  if (localStorage.getItem("logged")) {
+    const name = localStorage.getItem("name");
+    const role = localStorage.getItem("role");
+    const token = localStorage.getItem("token");
+    const session_time = localStorage.getItem("session_time");
+
+    // checking for logout time
+    const checkforsession = setInterval(() => {
+      var cd = new Date();
+      var sd = new Date(session_time);
+
+      if (cd > sd) {
+        clearInterval(checkforsession);
+        localStorage.clear();
+        toast.error("Session Expired!");
+
+        setTimeout(() => {
+          window.location.href = "/login";
+        }, 2000);
+      }
+    }, 100);
+    // checking for logout time
+
+    context = {
+      logged: true,
+      name: name,
+      role: role,
+      token: token,
+      session_time: session_time,
+    };
+  } else {
+    context = {
+      logged: false,
+    };
+  }
+
+  // console.log(context);
+
   var css = ` margin-top: 20% !important;`;
 
   return (
     <globalContext.Provider value={context}>
       <QueryClientProvider client={queryClinet}>
         <BrowserRouter>
+          <ToastContainer />
           <div Header="App">
             {loading ? (
               <div className="preloader">
@@ -58,13 +97,22 @@ function App() {
                   path="/reactpanel/"
                   element={<Content children={<Dashboard />} />}
                 />
+
                 <Route
                   path="/login/"
-                  element={<Content children={<Login />} />}
+                  element={
+                    <Content
+                      children={!context.logged ? <Login /> : <Dashboard />}
+                    />
+                  }
                 />
                 <Route
                   path="/register/"
-                  element={<Content children={<Register />} />}
+                  element={
+                    <Content
+                      children={!context.logged ? <Register /> : <Dashboard />}
+                    />
+                  }
                 />
                 <Route
                   path="/tables/"
