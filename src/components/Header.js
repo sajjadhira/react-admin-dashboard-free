@@ -14,16 +14,15 @@ import {
 import { FaSearch } from "react-icons/fa";
 import { BiMailSend } from "react-icons/bi";
 import { IoMdNotificationsOutline } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { BsToggleOff } from "react-icons/bs";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 
 import { useMediaQuery } from "react-responsive";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { globalContext } from "../App";
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -32,14 +31,15 @@ const Header = () => {
     setShow((s) => !s);
   };
 
-  const user = useContext(globalContext);
+  const navigate = useNavigate();
+
   // interaging logout
   const handleLogout = () => {
     localStorage.clear();
     toast.success("Logged Out Successfully!");
 
     setTimeout(() => {
-      window.location.href = "/login";
+      navigate("/login/");
     }, 1000);
   };
 
@@ -75,7 +75,7 @@ const Header = () => {
     // if (isBigScreen) {
     //   setShow(true);
     // }
-  }, [isDesktop, isLaptop, isBigScreen, user]);
+  }, [isDesktop, isLaptop, isBigScreen]);
 
   return (
     <>

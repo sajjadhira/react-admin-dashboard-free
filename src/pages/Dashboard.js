@@ -19,22 +19,30 @@ import { FiPieChart, FiArrowUp, FiArrowDown } from "react-icons/fi";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { React, useContext, useEffect } from "react";
-import { globalContext } from "../App";
-import { useNavigate } from "react-router-dom";
+import { React, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  const user = useContext(globalContext);
+  const name = localStorage.getItem("name");
+  // const role = localStorage.getItem("role");
+  // const token = localStorage.getItem("token");
 
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
   const toastFrom = "dashboard";
 
   useEffect(() => {
-    !user.logged
-      ? navigate("/login/")
-      : toast.info("You are logged in with " + user.name, {
-          toastId: toastFrom,
-        });
+    if (
+      !localStorage.getItem("logged") &&
+      localStorage.getItem("logged") === null
+    ) {
+      toast.error("You are not logged in", {
+        toastId: toastFrom,
+      });
+    } else {
+      toast.info("You are logged in with " + name, {
+        toastId: toastFrom,
+      });
+    }
   });
 
   const data = [

@@ -24,7 +24,17 @@ const queryClinet = new QueryClient();
 function App() {
   // const [context, setContext] = useState({ logged: false });
   const [loading, setLoading] = useState(true);
-  var context;
+  const context = useState({
+    logged: localStorage.getItem("logged") ? true : false,
+    name: localStorage.getItem("name") ? localStorage.getItem("name") : false,
+    role: localStorage.getItem("role") ? localStorage.getItem("role") : false,
+    token: localStorage.getItem("token")
+      ? localStorage.getItem("token")
+      : false,
+    session_time: localStorage.getItem("session_time")
+      ? localStorage.getItem("session_time")
+      : false,
+  });
 
   useEffect(() => {
     setTimeout(() => {
@@ -34,9 +44,6 @@ function App() {
 
   // searching for login
   if (localStorage.getItem("logged")) {
-    const name = localStorage.getItem("name");
-    const role = localStorage.getItem("role");
-    const token = localStorage.getItem("token");
     const session_time = localStorage.getItem("session_time");
 
     // checking for logout time
@@ -55,18 +62,6 @@ function App() {
       }
     }, 100);
     // checking for logout time
-
-    context = {
-      logged: true,
-      name: name,
-      role: role,
-      token: token,
-      session_time: session_time,
-    };
-  } else {
-    context = {
-      logged: false,
-    };
   }
 
   // console.log(context);
@@ -98,21 +93,10 @@ function App() {
                   element={<Content children={<Dashboard />} />}
                 />
 
-                <Route
-                  path="/login/"
-                  element={
-                    <Content
-                      children={!context.logged ? <Login /> : <Dashboard />}
-                    />
-                  }
-                />
+                <Route path="/login/" element={<Login />} />
                 <Route
                   path="/register/"
-                  element={
-                    <Content
-                      children={!context.logged ? <Register /> : <Dashboard />}
-                    />
-                  }
+                  element={<Content children={<Register />} />}
                 />
                 <Route
                   path="/tables/"

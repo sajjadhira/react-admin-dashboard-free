@@ -11,19 +11,19 @@ import {
 
 import { RiShieldUserFill } from "react-icons/ri";
 import { AiOutlineDashboard } from "react-icons/ai";
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 import { Link } from "react-router-dom";
 
 import Image from "react-bootstrap/Image";
 import avatar from "../images/avatar.jpg";
 
-import { globalContext } from "../App";
-
 const Sidebar = () => {
   const [pagesmenu, setpagesmenu] = useState(false);
 
-  const user = useContext(globalContext);
+  const name = localStorage.getItem("name");
+  const role = localStorage.getItem("role");
+  // const token = localStorage.getItem("token");
 
   return (
     <>
@@ -39,8 +39,8 @@ const Sidebar = () => {
           <div className="avatar">
             <Image src={avatar} roundedCircle={true} />
           </div>
-          <div className="name pt-1 fw-bold">{user.name}</div>
-          <div className="role pt-1 fw-light">{user.role}</div>
+          <div className="name pt-1 fw-bold">{name}</div>
+          <div className="role pt-1 fw-light">{role}</div>
         </div>
         <ul className="navbar-nav sidebar mt-5">
           <li>
@@ -50,7 +50,7 @@ const Sidebar = () => {
           </li>
 
           <li className="mt-3">
-            <Link to="/" className="nav-link px-3 sidebar-link">
+            <Link to="/reactpanel/" className="nav-link px-3 sidebar-link">
               <span>
                 <AiOutlineDashboard className="me-2" />
               </span>

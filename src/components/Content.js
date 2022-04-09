@@ -1,23 +1,25 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "./Header";
-import { globalContext } from "../App";
-import { useContext } from "react";
 
 const Content = ({ children }) => {
-  const user = useContext(globalContext);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (
+      !localStorage.getItem("logged") &&
+      localStorage.getItem("logged") === null
+    ) {
+      return navigate("/login/");
+    }
+  });
   return (
     <>
-      {user.logged ? (
-        <div>
-          <Header />
-          <main className="mt-3 pt-3 main">
-            <div className="container-fluid">{children}</div>
-          </main>
-        </div>
-      ) : (
-        <main className="mt-3 pt-3">
+      <div>
+        <Header />
+        <main className="mt-3 pt-3 main">
           <div className="container-fluid">{children}</div>
         </main>
-      )}
+      </div>
     </>
   );
 };

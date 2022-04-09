@@ -1,6 +1,5 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { globalContext } from "../App";
 import { Form, Button, Row, Col, Image, Card, Spinner } from "react-bootstrap";
 import happy from "../images/happy.png";
 import { ToastContainer, toast } from "react-toastify";
@@ -14,7 +13,6 @@ import {
 } from "react-icons/bs";
 
 const Login = () => {
-  const user = useContext(globalContext);
   const [disabled, setDisabled] = useState(false);
   const [button, setButton] = useState("Login");
   const [heart, setHeart] = useState(<BsHeart />);
@@ -28,10 +26,11 @@ const Login = () => {
   const accept_password = "123456";
 
   useEffect(() => {
-    if (user.logged) {
-      window.location.href = "/";
+    if (localStorage.getItem("logged")) {
+      // window.location.href = "/";
+      navigate("/reactpanel/");
     }
-  }, [user, navigate]);
+  }, [navigate]);
 
   const handleEmail = (e) => {
     const email_value = e.target.value;
@@ -60,6 +59,11 @@ const Login = () => {
       setEmail(accept_email);
       setPassword(accept_password);
       toast.success("Congratulations, You did it. now click to Login button!");
+    } else if (newclick > 3) {
+      const idOfToast = "edge";
+      toast.info("Click to login button please.", {
+        toastId: idOfToast,
+      });
     }
   };
 
@@ -81,23 +85,24 @@ const Login = () => {
       if (password === accept_password) {
         toast.success("Logged in successfully!");
 
-        const futureDate = new Date();
-        futureDate.setDate(futureDate.getDate() + 30);
+        // const futureDate = new Date();
+        // futureDate.setDate(futureDate.getDate() + 30);
 
         // 1 minute for check purposne
-        // var minutesToAdd = 1;
-        // var currentDate = new Date();
-        // var futureDate = new Date(currentDate.getTime() + minutesToAdd * 60000);
+        var minutesToAdd = 1;
+        var currentDate = new Date();
+        var futureDate = new Date(currentDate.getTime() + minutesToAdd * 60000);
 
         localStorage.setItem("logged", true);
-        localStorage.setItem("name", "John Doe");
+        localStorage.setItem("name", "Matt");
         localStorage.setItem("role", "superadmin");
         localStorage.setItem("token", "123456789abcdefgh");
         localStorage.setItem("session_time", futureDate);
 
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 2000);
+        // setTimeout(() => {
+        // window.location.href = "/";
+        navigate("/reactpanel/");
+        // }, 2000);
       } else {
         toast.error("Authentication error!");
         setDisabled(false);
@@ -113,73 +118,77 @@ const Login = () => {
   return (
     <>
       <ToastContainer />
-      <div className="container">
-        <Row className="mt-2 mb-5">
-          <Col md={6} className="mt-5 d-xs-none">
-            <Image className="happy-login mt-5" src={happy} />
-          </Col>
-          <Col md={6}>
-            <Card className="p-2 p-md-5 pb-3 mt-5 auth-form">
-              <h3 className="text-center fw-bold text-brand fs-1">Login</h3>
-              <p className="text-center text-muted">
-                Please login to your account
-              </p>
-              <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control
-                    type="email"
-                    placeholder="Enter email"
-                    required={true}
-                    name="email"
-                    onKeyUp={handleEmail}
-                    defaultValue={email}
-                  />
-                </Form.Group>
-
-                <Form.Group className="ms-0 mb-3" controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    required={true}
-                    name="password"
-                    onKeyUp={handlePassword}
-                    defaultValue={password}
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                  <Form.Check
-                    type="checkbox"
-                    label="Remember Me"
-                    className="ms-2"
-                  />
-                </Form.Group>
-                <Button
-                  variant="default w-100"
-                  className="mt-2"
-                  onClick={handleLogin}
-                  type="submit"
-                  disabled={disabled}
-                >
-                  {button}
-                </Button>
-              </Form>
-
-              <div className="mt-4 text-center">
-                <p className="text-muted">
-                  Please click to the heart icon 3 times to fill the credential
-                  automatically.
+      <main className="mt-3 pt-3">
+        <div className="container">
+          <Row className="mt-2 mb-5">
+            <Col md={6} className="mt-5 d-xs-none">
+              <Image className="happy-login mt-5" src={happy} />
+            </Col>
+            <Col md={6}>
+              <Card className="p-2 p-md-5 pb-3 mt-5 auth-form">
+                <h3 className="text-center fw-bold text-brand fs-1">Login</h3>
+                <p className="text-center text-muted">
+                  Please login to your account
                 </p>
-                <span
-                  className="text-danger fs-1 heart-fun"
-                  onClick={handleHeart}
-                >
-                  {heart}
-                </span>
-              </div>
+                <Form>
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control
+                      type="email"
+                      placeholder="Enter email"
+                      required={true}
+                      name="email"
+                      onKeyUp={handleEmail}
+                      defaultValue={email}
+                    />
+                  </Form.Group>
 
-              {/* <div className="mt-2">
+                  <Form.Group
+                    className="ms-0 mb-3"
+                    controlId="formBasicPassword"
+                  >
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                      type="password"
+                      placeholder="Password"
+                      required={true}
+                      name="password"
+                      onKeyUp={handlePassword}
+                      defaultValue={password}
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                    <Form.Check
+                      type="checkbox"
+                      label="Remember Me"
+                      className="ms-2"
+                    />
+                  </Form.Group>
+                  <Button
+                    variant="default w-100"
+                    className="mt-2"
+                    onClick={handleLogin}
+                    type="submit"
+                    disabled={disabled}
+                  >
+                    {button}
+                  </Button>
+                </Form>
+
+                <div className="mt-4 text-center">
+                  <p className="text-muted">
+                    Please click to the heart icon 3 times to fill the
+                    credential automatically.
+                  </p>
+                  <span
+                    className="text-danger fs-1 heart-fun"
+                    onClick={handleHeart}
+                  >
+                    {heart}
+                  </span>
+                </div>
+
+                {/* <div className="mt-2">
                 <Table striped bordered hover variant="light">
                   <thead>
                     <tr>
@@ -195,10 +204,11 @@ const Login = () => {
                   </tbody>
                 </Table>
               </div> */}
-            </Card>
-          </Col>
-        </Row>
-      </div>
+              </Card>
+            </Col>
+          </Row>
+        </div>
+      </main>
     </>
   );
 };
