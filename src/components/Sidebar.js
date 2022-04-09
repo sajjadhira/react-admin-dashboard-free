@@ -11,12 +11,14 @@ import {
 
 import { RiShieldUserFill } from "react-icons/ri";
 import { AiOutlineDashboard } from "react-icons/ai";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import { Link } from "react-router-dom";
 
 import Image from "react-bootstrap/Image";
 import avatar from "../images/avatar.jpg";
+
+import { globalContext } from "../App";
 
 const Sidebar = () => {
   const [pagesmenu, setpagesmenu] = useState(false);
@@ -25,12 +27,14 @@ const Sidebar = () => {
   const role = localStorage.getItem("role");
   // const token = localStorage.getItem("token");
 
+  const context = useContext(globalContext);
+
   return (
     <>
       <Offcanvas.Header closeButton>
         <Link to="/">
-          <Offcanvas.Title className="d-flex ms-auto">
-            <span className="brand-text">ReactPanel</span>
+          <Offcanvas.Title className="text-center">
+            <span className="brand-text">{context.brand_name}</span>
           </Offcanvas.Title>
         </Link>
       </Offcanvas.Header>
@@ -40,7 +44,7 @@ const Sidebar = () => {
             <Image src={avatar} roundedCircle={true} />
           </div>
           <div className="name pt-1 fw-bold">{name}</div>
-          <div className="role pt-1 fw-light">{role}</div>
+          <div className="role pt-1 fw-light">{role.toUpperCase()}</div>
         </div>
         <ul className="navbar-nav sidebar mt-5">
           <li>

@@ -17,14 +17,16 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 
 import { BsToggleOff } from "react-icons/bs";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 
 import { useMediaQuery } from "react-responsive";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Header = () => {
+import { globalContext } from "../App";
+
+const Mainheader = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const toggleShow = () => {
@@ -32,11 +34,12 @@ const Header = () => {
   };
 
   const navigate = useNavigate();
+  const { brand_name } = useContext(globalContext);
 
   // interaging logout
   const handleLogout = () => {
     localStorage.clear();
-    toast.success("Logged Out Successfully!");
+    toast.success("LogOut Successfully!");
 
     setTimeout(() => {
       navigate("/login/");
@@ -56,25 +59,10 @@ const Header = () => {
   });
 
   useEffect(() => {
-    //   const isTabletDevice = useMediaQuery({
-    //     query: "(min-device-width: 768px)",
-    //   });
-
-    //   const isLaptop = useMediaQuery({
-    //     query: "(min-device-width: 1024px)",
-    //   });
-
+    document.title = "Dashboard";
     if (isLaptop || isDesktop || isBigScreen) {
       setShow(true);
     }
-
-    // if (isDesktop) {
-    //   setShow(true);
-    // }
-
-    // if (isBigScreen) {
-    //   setShow(true);
-    // }
   }, [isDesktop, isLaptop, isBigScreen]);
 
   return (
@@ -83,7 +71,9 @@ const Header = () => {
       <Navbar bg="default" className="bg-light shadow" expand="lg">
         <Container fluid>
           <Link to="/">
-            <Navbar.Brand className="brand-text me-2">ReactPanel</Navbar.Brand>
+            <Navbar.Brand className="brand-text me-2">
+              {brand_name}
+            </Navbar.Brand>
           </Link>
 
           <Button
@@ -151,4 +141,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Mainheader;

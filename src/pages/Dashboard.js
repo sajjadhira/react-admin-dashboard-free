@@ -39,9 +39,9 @@ const Dashboard = () => {
         toastId: toastFrom,
       });
     } else {
-      toast.info("You are logged in with " + name, {
-        toastId: toastFrom,
-      });
+      // toast.info("You are logged in with " + name, {
+      //   toastId: toastFrom,
+      // });
     }
   });
 

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "./Header";
+import Mainheader from "./Mainheader";
 
 const Content = ({ children }) => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const Content = ({ children }) => {
   return (
     <>
       <div>
-        <Header />
+        <Mainheader />
         <main className="mt-3 pt-3 main">
           <div className="container-fluid">{children}</div>
         </main>

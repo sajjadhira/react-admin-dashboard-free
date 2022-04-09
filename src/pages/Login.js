@@ -21,12 +21,17 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(false);
 
   const accept_email = "admin@inihub.com";
   const accept_password = "123456";
 
   useEffect(() => {
-    if (localStorage.getItem("logged")) {
+    document.title = "Login";
+    if (
+      localStorage.getItem("logged") &&
+      localStorage.getItem("logged") !== null
+    ) {
       // window.location.href = "/";
       navigate("/reactpanel/");
     }
@@ -42,6 +47,10 @@ const Login = () => {
     setPassword(password_value);
   };
 
+  const handleCheckbox = (e) => {
+    const theCheckbox = e.target.value;
+    setRemember(theCheckbox);
+  };
   const handleHeart = () => {
     var newclick = heartclick + 1;
     setHeartclick(newclick);
@@ -85,13 +94,17 @@ const Login = () => {
       if (password === accept_password) {
         toast.success("Logged in successfully!");
 
-        // const futureDate = new Date();
-        // futureDate.setDate(futureDate.getDate() + 30);
-
-        // 1 minute for check purposne
-        var minutesToAdd = 1;
-        var currentDate = new Date();
-        var futureDate = new Date(currentDate.getTime() + minutesToAdd * 60000);
+        if (remember) {
+          const futureDate = new Date();
+          futureDate.setDate(futureDate.getDate() + 30);
+        } else {
+          // 1 minute for check purposne
+          var minutesToAdd = 1;
+          var currentDate = new Date();
+          var futureDate = new Date(
+            currentDate.getTime() + minutesToAdd * 60000
+          );
+        }
 
         localStorage.setItem("logged", true);
         localStorage.setItem("name", "Matt");
@@ -162,6 +175,8 @@ const Login = () => {
                       type="checkbox"
                       label="Remember Me"
                       className="ms-2"
+                      onChange={handleCheckbox}
+                      defaultValue={remember}
                     />
                   </Form.Group>
                   <Button
