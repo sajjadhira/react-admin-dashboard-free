@@ -27,7 +27,6 @@ const Login = () => {
   const accept_password = "123456";
 
   useEffect(() => {
-    document.title = "Login";
     if (
       localStorage.getItem("logged") &&
       localStorage.getItem("logged") !== null
@@ -35,6 +34,8 @@ const Login = () => {
       // window.location.href = "/";
       navigate("/reactpanel/");
     }
+
+    document.title = "Login";
   }, [navigate]);
 
   const handleEmail = (e) => {

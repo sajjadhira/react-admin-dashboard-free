@@ -19,7 +19,10 @@ const Idlelogin = () => {
         var cd = new Date();
         var sd = new Date(session_time);
 
-        if (cd > sd) {
+        if (
+          typeof localStorage.getItem("session_time") === "undefined" ||
+          cd > sd
+        ) {
           clearInterval(checkforsession);
           localStorage.clear();
           const toastId = "session-expire";
