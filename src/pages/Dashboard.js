@@ -23,7 +23,7 @@ import { React, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  const name = localStorage.getItem("name");
+  // const name = localStorage.getItem("name");
   // const role = localStorage.getItem("role");
   // const token = localStorage.getItem("token");
 
